@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: nexus-ai-exhibition
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: NEXUS_DB_PATH
+        value: /var/data/nexus.db
+      - key: PYTHONUNBUFFERED
+        value: "1"
+    disk:
+      name: nexus-ai-data
+      mountPath: /var/data
+      sizeGB: 1
